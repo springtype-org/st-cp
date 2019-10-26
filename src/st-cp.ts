@@ -54,6 +54,7 @@ export const copyPathOrFile = async (sourcePath: string, destinationPath: string
             return true;
         } else {
 
+            // TODO: Fixme, I'm broken
             const statOfSourcePath = await fsp.lstat(sourcePath);
             if (statOfSourcePath.isDirectory()) {
                 childProcess.execSync('cp', ['-rp', `"${sourcePath}"`, `"${destinationPath}"`], {stdio: 'inherit'});
