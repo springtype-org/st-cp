@@ -1,6 +1,6 @@
 {
     "name": "st-cp",
-    "version": "1.0.0-alpha.1.48",
+    "version": "1.0.0-alpha.1.49",
     "publishConfig": {
         "access": "public"
     },
@@ -17,7 +17,7 @@
     },
     "scripts": {
         "build": "tsc",
-        "postbuild": "cp package.json dist"
+        "postbuild": "cp package.json dist && cp -r node_modules dist"
     },
     "engines": {
         "node": ">=10"
