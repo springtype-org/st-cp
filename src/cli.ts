@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import {copyPathOrFile} from "./st-cp";
+import {copyPathOrFile} from "./function/st-cp";
 
 const path = require('path');
 const chalk = require('chalk');
@@ -14,27 +14,13 @@ const destinationPath = sourcePaths.pop() || '';
 (async () => {
 
     if (sourcePaths.length == 0) {
-
         console.log(chalk.red('Nothing to copy.'));
-
     } else {
-
         console.log(chalk.green('Start copying paths:'), sourcePaths);
-
-        for (let i = 0; i < sourcePaths.length; i++) {
-
-            const sourcePath = path.resolve(sourcePaths[i]);
-
-            if (fs.existsSync(sourcePath)) {
-                if (await copyPathOrFile(sourcePath, destinationPath, true)) {
-                    console.log(chalk.cyan(`Copied ${chalk.white(sourcePath)} to ${chalk.white(destinationPath)}`))
-                } else {
-                    console.log(chalk.red(`Error copying: ${sourcePath}`))
-                }
-            }
+        for (const sourcePath of sourcePaths) {
+           copyPathOrFile(sourcePath, destinationPath)
         }
     }
-
 })();
 
 

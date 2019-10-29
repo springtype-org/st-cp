@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@types/node@^11.13.7":
-  version "11.13.19"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.13.19.tgz#c7bd7009aa850464775d8a814e18138d633cd676"
-  integrity sha512-tLRDU1hmcWamtgRT2iVRdraAQVGFQGgtcqracSo9XyMN1VeZLSVGb8RJJxVqab7UGbijoUijGPVFMjmqzyZIUw==
+"@types/node@^12.11.7":
+  version "12.11.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.11.7.tgz#57682a9771a3f7b09c2497f28129a0462966524a"
+  integrity sha512-JNbGaHFCLwgHn/iCckiGSOZ1XYHsKFwREtzPwSGCVld1SGhOlmZw2D4ZI94HQCrBHbADzW9m4LER/8olJTRGHA==
 
 ansi-styles@^3.2.1:
   version "3.2.1"
@@ -71,10 +71,10 @@ node-bin-setup@^1.0.0:
   resolved "https://registry.yarnpkg.com/node-bin-setup/-/node-bin-setup-1.0.6.tgz#4b5c9bb937ece702d7069b36ca78af4684677528"
   integrity sha512-uPIxXNis1CRbv1DwqAxkgBk5NFV3s7cMN/Gf556jSw6jBvV7ca4F9lRL/8cALcZecRibeqU+5dFYqFFmzv5a0Q==
 
-node@^12.6.0:
-  version "12.8.1"
-  resolved "https://registry.yarnpkg.com/node/-/node-12.8.1.tgz#037af95afc8d08532d8797c3ab573310221fefa2"
-  integrity sha512-oEBcLagap4lSVPWxZim1hyQ5xsd+3nFbB/dAEmY2hoAgF38hIXRBj1foZRXAqfRXdmUhdMoNGVcTvgTg2i1eQQ==
+node@^12.12.0:
+  version "12.13.0"
+  resolved "https://registry.yarnpkg.com/node/-/node-12.13.0.tgz#9702970a7038dc19f83a8c63f4486719fd877f0e"
+  integrity sha512-quDNTkbEEXCuDQNXX0B3faD17s1ggJ7MpdhqQKiOnvy0jooaDHSJ079pP+MfOzRkujcJgEHNIA0/G2imOGZImg==
   dependencies:
     node-bin-setup "^1.0.0"
 
