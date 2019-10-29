@@ -1,16 +1,16 @@
-import {ICopyPathOrFile} from "../interface/icopypathorfile";
-import {isDirectory} from "./isDirectory";
-import {execute} from "./execute";
-import {resolve, relative} from "path"
 import chalk from "chalk";
-import {existPath} from "./existPath";
+import { relative, resolve } from "path";
+import { ICopyPathOrFile } from "../interface/icopypathorfile";
+import { execute } from "./execute";
+import { existPath } from "./existPath";
+import { isDirectory } from "./isDirectory";
 
 export const copyPathOrFile: ICopyPathOrFile = {
     resolve,
     relative,
     copyPathOrFile: (sourcePath: string, destinationPath: string): void => {
         let recursive = 'p';
-        if (isDirectory(destinationPath)) {
+        if (isDirectory(destinationPath) || isDirectory(sourcePath) && !existPath(destinationPath)) {
             recursive = 'rp';
         } else if (existPath(destinationPath)) {
             console.log(chalk.red('destination file already exists: ' + relative(process.cwd(), destinationPath)));

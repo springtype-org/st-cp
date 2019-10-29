@@ -1,6 +1,6 @@
 {
     "name": "st-cp",
-    "version": "1.0.0-alpha.1.58",
+    "version": "1.0.0-alpha.1.59",
     "publishConfig": {
         "access": "public"
     },
@@ -16,9 +16,9 @@
         "url": "git+https://github.com/springtype-org/springtype.git"
     },
     "scripts": {
+        "prebuild": "st-run st-rm-rf dist",
         "build": "tsc",
-        "prebuild": "npx st-rm-rf dist",
-        "postbuild": "npx st-cp package.json node_modules dist"
+        "postbuild": "st-run st-cp README.md package.json node_modules dist"
     },
     "engines": {
         "node": ">=10"
@@ -30,8 +30,6 @@
     "bin": {
         "st-cp": "./cli.js"
     },
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
     "author": "Aron Homberg, Michael Mannseicher",
     "license": "MIT",
     "bugs": {
@@ -44,7 +42,8 @@
     },
     "devDependencies": {
         "@types/node": "^12.11.7",
-        "node": "^12.12.0",
-        "typescript": "^3.3.4000"
+        "node": "^12.13.0",
+        "typescript": "^3.6.4",
+        "st-run": "2.0.0-alpha.10"
     }
 }
