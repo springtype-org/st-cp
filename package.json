@@ -1,6 +1,6 @@
 {
     "name": "st-cp",
-    "version": "1.0.0-alpha.1.59",
+    "version": "2.0.0-alpha.2",
     "publishConfig": {
         "access": "public"
     },
@@ -16,16 +16,15 @@
         "url": "git+https://github.com/springtype-org/springtype.git"
     },
     "scripts": {
-        "prebuild": "st-run st-rm-rf dist",
+        "prebuild": "npx st-rm-rf dist",
         "build": "tsc",
-        "postbuild": "st-run st-cp README.md package.json node_modules dist"
+        "postbuild": "npx st-cp README.md package.json node_modules dist"
     },
     "engines": {
         "node": ">=10"
     },
     "bundledDependencies": [
-        "chalk",
-        "cross-spawn"
+        "chalk"
     ],
     "bin": {
         "st-cp": "./cli.js"

@@ -1,10 +1,7 @@
 #!/usr/bin/env node
 
 import {copyPathOrFile} from "./function/st-cp";
-
-const path = require('path');
-const chalk = require('chalk');
-const fs = require('fs');
+import chalk from "chalk";
 
 const sourcePaths = process.argv.slice(2);
 

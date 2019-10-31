@@ -1,8 +1,8 @@
 import {ICopyPathOrFile} from "../interface/icopypathorfile";
-import {isDirectory} from "./isDirectory";
+import {isDirectory} from "./isdirectory";
 import {execute} from "./execute";
 import {win32} from "path";
-import {existPath} from "./existPath";
+import {existPath} from "./existpath";
 import {copyFileSync, mkdirSync} from "fs";
 import chalk from "chalk";
 

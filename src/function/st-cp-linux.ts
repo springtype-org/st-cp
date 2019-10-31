@@ -2,8 +2,8 @@ import chalk from "chalk";
 import { relative, resolve } from "path";
 import { ICopyPathOrFile } from "../interface/icopypathorfile";
 import { execute } from "./execute";
-import { existPath } from "./existPath";
-import { isDirectory } from "./isDirectory";
+import { existPath } from "./existpath";
+import { isDirectory } from "./isdirectory";
 
 export const copyPathOrFile: ICopyPathOrFile = {
     resolve,
