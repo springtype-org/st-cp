@@ -1,6 +1,6 @@
 {
     "name": "st-cp",
-    "version": "2.0.0-alpha.2",
+    "version": "2.0.0-alpha.3",
     "publishConfig": {
         "access": "public"
     },
@@ -16,9 +16,7 @@
         "url": "git+https://github.com/springtype-org/springtype.git"
     },
     "scripts": {
-        "prebuild": "npx st-rm-rf dist",
-        "build": "tsc",
-        "postbuild": "npx st-cp README.md package.json node_modules dist"
+        "build": "st-run st-rm-rf dist ++ system:tsc ++ st-cp README.md package.json node_modules dist"
     },
     "engines": {
         "node": ">=10"
@@ -43,6 +41,6 @@
         "@types/node": "^12.11.7",
         "node": "^12.13.0",
         "typescript": "^3.6.4",
-        "st-run": "2.0.0-alpha.10"
+        "st-run": "2.0.0-alpha.14"
     }
 }

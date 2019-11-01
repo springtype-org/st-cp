@@ -330,16 +330,35 @@ st-rm-rf@^1.0.0-alpha.1.42:
     chalk "^2.4.2"
     cross-spawn "^6.0.5"
 
-st-run@2.0.0-alpha.10:
-  version "2.0.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/st-run/-/st-run-2.0.0-alpha.10.tgz#1e4de91cf8810431332bb9ec1ce42445b76682ae"
-  integrity sha512-vxHVAEyVjOVbJZPunshqVVEmvtELeUb/SXe1Ohcx6NthZjfjY/WCjlCiJ+Q2GMe2CaU6v/U6Aw4WRAH5XYCv7A==
+st-rm-rf@^2.0.0-alpha.1:
+  version "2.0.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/st-rm-rf/-/st-rm-rf-2.0.0-alpha.1.tgz#cff9c90a117c3d7bc929db3bf8267f2c82423cfe"
+  integrity sha512-0V1eWc/zdtEN2wtOAPoQ/IdKwQnO9PJz2/VCiVcalZBSHJ1us3Nr0IMMR4q0Iou3Nqf3CHrHMnlrFMCNBVKD8g==
+  dependencies:
+    chalk "^2.4.2"
+    cross-spawn "^6.0.5"
+
+st-run@2.0.0-alpha.13:
+  version "2.0.0-alpha.13"
+  resolved "https://registry.yarnpkg.com/st-run/-/st-run-2.0.0-alpha.13.tgz#6cbe012dab05bdc7df17d38aee2b74f7baa67236"
+  integrity sha512-KnLK29YVjo5zYgODEVILw6z6y98IhJ4EvVUukZ1DVnFa9OrarYD2KWxGr+bz2xPx8/y8W3k5CX+ANbYvBHwn9w==
   dependencies:
     chalk "^2.4.2"
     cross-spawn "^7.0.1"
     public-ip "^3.2.0"
-    st-rm-rf "^1.0.0-alpha.1.42"
-    st-run "2.0.0-alpha.7"
+    st-rm-rf "^2.0.0-alpha.1"
+    st-run "2.0.0-alpha.4"
+
+st-run@2.0.0-alpha.14:
+  version "2.0.0-alpha.14"
+  resolved "https://registry.yarnpkg.com/st-run/-/st-run-2.0.0-alpha.14.tgz#df00a6469db97c8325e2ebdf7cb908267deeb956"
+  integrity sha512-hn+TusTIA6PnBPb31Agi9vPF8JnkjUnwLDG/qQKLENNo9C8kkTXbL2lBMD6ty9Po9L7JtQ1Or7YGSkbA39ejIQ==
+  dependencies:
+    chalk "^2.4.2"
+    cross-spawn "^7.0.1"
+    public-ip "^3.2.0"
+    st-rm-rf "^2.0.0-alpha.1"
+    st-run "2.0.0-alpha.13"
 
 st-run@2.0.0-alpha.2:
   version "2.0.0-alpha.2"
@@ -361,17 +380,6 @@ st-run@2.0.0-alpha.4:
     public-ip "^3.2.0"
     st-rm-rf "^1.0.0-alpha.1.42"
     st-run "2.0.0-alpha.2"
-
-st-run@2.0.0-alpha.7:
-  version "2.0.0-alpha.7"
-  resolved "https://registry.yarnpkg.com/st-run/-/st-run-2.0.0-alpha.7.tgz#80f09f1a379f6f7c2aa0642f2dc5a0918e7d4132"
-  integrity sha512-usbozr6duX3wJsYiJVJPxURpNAIeyH/IOkcDgjToJsMmhgzVq7NVIOvIvALbxu1trlYAkeEPmtRxNvL+8t77JQ==
-  dependencies:
-    chalk "^2.4.2"
-    cross-spawn "^7.0.1"
-    public-ip "^3.2.0"
-    st-rm-rf "^1.0.0-alpha.1.42"
-    st-run "2.0.0-alpha.4"
 
 supports-color@^5.3.0:
   version "5.5.0"
