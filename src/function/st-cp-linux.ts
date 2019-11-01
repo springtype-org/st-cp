@@ -1,23 +1,21 @@
 import chalk from "chalk";
+import { execSync } from "child_process";
+import { existsSync } from "fs";
 import { relative, resolve } from "path";
-import { ICopyPathOrFile } from "../interface/icopypathorfile";
-import { execute } from "./execute";
-import { existPath } from "./existpath";
-import { isDirectory } from "./isdirectory";
+import { ICopyPathOrFile } from "../interface/icopy-path-or-file";
+import { isDirectory } from "./is-directory";
 
 export const copyPathOrFile: ICopyPathOrFile = {
-    resolve,
-    relative,
-    copyPathOrFile: (sourcePath: string, destinationPath: string): void => {
-        let recursive = 'p';
-        if (isDirectory(destinationPath) || isDirectory(sourcePath) && !existPath(destinationPath)) {
-            recursive = 'rp';
-        } else if (existPath(destinationPath)) {
-            console.log(chalk.red('destination file already exists: ' + relative(process.cwd(), destinationPath)));
-            process.exit(1);
-        }
-
-
-        execute(`cp -${recursive} "${sourcePath}" "${destinationPath}"`, {stdio: 'inherit'});
+  resolve,
+  relative,
+  copyPathOrFile: (sourcePath: string, destinationPath: string): void => {
+    let recursive = "p";
+    if (isDirectory(destinationPath) || (isDirectory(sourcePath) && !existsSync(destinationPath))) {
+      recursive = "rp";
+    } else if (existsSync(destinationPath)) {
+      console.log(chalk.yellow("Warning: Destination file already exists: " + relative(process.cwd(), destinationPath)));
     }
+
+    execSync(`cp -${recursive} "${sourcePath}" "${destinationPath}"`, { stdio: "inherit" });
+  },
 };
