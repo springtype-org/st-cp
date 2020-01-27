@@ -1,6 +1,6 @@
 {
     "name": "st-cp",
-    "version": "2.0.0-alpha.4",
+    "version": "2.0.0-alpha.5",
     "publishConfig": {
         "access": "public"
     },
@@ -38,8 +38,7 @@
     },
     "devDependencies": {
         "@types/node": "^12.12.5",
-        "node": "^12.13.0",
-        "typescript": "^3.6.4",
-        "st-run": "2.0.0-alpha.20"
+        "node": "^13.6.0",
+        "typescript": "^3.6.4"
     }
 }
