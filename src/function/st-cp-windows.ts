@@ -1,11 +1,12 @@
-import chalk from "chalk";
-import {execSync} from "child_process";
-import {copyFileSync, existsSync, mkdirSync} from "fs";
-import {win32} from "path";
-import {ICopyPathOrFile} from "../interface/i-copy-path-or-file";
-import {isDirectory} from "./is-directory";
-import {ICopyPathOrFileOption} from "../interface/i-copy-path-or-file-option";
-import {IDestination} from "../interface/i-destination";
+
+const chalk = require("chalk");
+import { execSync } from "child_process";
+import { copyFileSync, existsSync, mkdirSync } from "fs";
+import { win32 } from "path";
+import { ICopyPathOrFile } from "../interface/i-copy-path-or-file";
+import { isDirectory } from "./is-directory";
+import { ICopyPathOrFileOption } from "../interface/i-copy-path-or-file-option";
+import { IDestination } from "../interface/i-destination";
 
 const path = win32;
 const resolve = win32.resolve;
@@ -27,7 +28,7 @@ export const copyPathOrFile: ICopyPathOrFile = {
         if (isDirectory(sourcePath)) {
             const destinationPathWithOptionalFileName = existsSync(destinationPath) && isDirectory(destinationPath) ? appendFileName(destinationPath, extractFileName(sourcePath)) : destinationPath;
 
-            execSync(`(robocopy "${sourcePath}" "${destinationPathWithOptionalFileName}" /MIR /NFL /NDL /NJH /NJS /nc /ns /np) ^& IF %ERRORLEVEL% LEQ 1 exit 0`, {stdio: "inherit"});
+            execSync(`(robocopy "${sourcePath}" "${destinationPathWithOptionalFileName}" /MIR /NFL /NDL /NJH /NJS /nc /ns /np) ^& IF %ERRORLEVEL% LEQ 1 exit 0`, { stdio: "inherit" });
         } else {
             const dirName = destination.isDirectory ? destinationPath : path.dirname(destinationPath);
             if (!existsSync(dirName)) {

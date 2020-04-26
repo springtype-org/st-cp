@@ -1,11 +1,12 @@
-import chalk from "chalk";
-import {execSync} from "child_process";
-import {existsSync} from "fs";
-import {relative, resolve,sep} from "path";
-import {ICopyPathOrFile} from "../interface/i-copy-path-or-file";
-import {isDirectory} from "./is-directory";
-import {ICopyPathOrFileOption} from "../interface/i-copy-path-or-file-option";
-import {IDestination} from "../interface/i-destination";
+
+const chalk = require("chalk");
+import { execSync } from "child_process";
+import { existsSync } from "fs";
+import { relative, resolve, sep } from "path";
+import { ICopyPathOrFile } from "../interface/i-copy-path-or-file";
+import { isDirectory } from "./is-directory";
+import { ICopyPathOrFileOption } from "../interface/i-copy-path-or-file-option";
+import { IDestination } from "../interface/i-destination";
 
 
 export const copyPathOrFile: ICopyPathOrFile = {
@@ -22,6 +23,6 @@ export const copyPathOrFile: ICopyPathOrFile = {
             }
         }
 
-        execSync(`cp -${recursive} "${sourcePath}" "${destinationPath}"`, {stdio: "inherit"});
+        execSync(`cp -${recursive} "${sourcePath}" "${destinationPath}"`, { stdio: "inherit" });
     },
 };

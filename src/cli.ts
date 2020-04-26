@@ -1,7 +1,6 @@
 #!/usr/bin/env node
-
-import chalk from "chalk";
-import {copyPathOrFile} from "./function/st-cp";
+const chalk = require("chalk");
+import { copyPathOrFile } from "./function/st-cp";
 
 const sourcePaths = process.argv.slice(2);
 
@@ -17,7 +16,7 @@ const destinationPath = sourcePaths.pop() || "";
         console.log(chalk.cyan(`Copying ${length} ${length == 1 ? 'file' : 'files'} to ${chalk.white(destinationPath)}  [${sourcePaths.map(v => chalk.white(v)).join(',')}]`));
         for (let i = 0; i < length; i++) {
             const sourcePath = sourcePaths[i];
-            copyPathOrFile(sourcePath, {path: destinationPath, isDirectory: isDestinationDirectory}, {
+            copyPathOrFile(sourcePath, { path: destinationPath, isDirectory: isDestinationDirectory }, {
                 printInfo: false,
                 printWarning: false,
                 printError: true,
