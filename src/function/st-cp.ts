@@ -1,6 +1,7 @@
+import {sep} from "path";
 
 const chalk = require("chalk");
-import { existsSync } from 'fs';
+import {existsSync, mkdirSync} from 'fs';
 import { platform } from "os";
 import { ICopyPathOrFile } from "../interface/i-copy-path-or-file";
 import { isDirectory } from "./is-directory";
@@ -32,6 +33,21 @@ export const copyPathOrFile = (sourcePath: string, destination: IDestination, op
 
         if (option.printInfo) {
             console.log(chalk.cyan(`[*] Copying ${isFolder ? "folder" : "file"} ${chalk.white(copy.relative(currentPath, sourcePath))} to ${chalk.white(copy.relative(currentPath, destinationPath))}...`));
+        }
+
+        //create folder if not exist
+        if (destination.isDirectory) {
+            if (!existsSync(destinationPath)) {
+                mkdirSync(destinationPath, {
+                    recursive: true,
+                });
+            }
+        } else {
+            if (destinationPath.indexOf(sep) > 0) {
+                mkdirSync(destinationPath.substring(0, destinationPath.lastIndexOf(sep)), {
+                    recursive: true,
+                })
+            }
         }
         copy.copyPathOrFile(sourcePath, { ...destination, path: destinationPath }, option);
     } catch (err) {

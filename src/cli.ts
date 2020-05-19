@@ -1,6 +1,9 @@
 #!/usr/bin/env node
+import {isDirectory} from "./function/is-directory";
+
 const chalk = require("chalk");
 import { copyPathOrFile } from "./function/st-cp";
+import {existsSync} from "fs";
 
 const sourcePaths = process.argv.slice(2);
 
@@ -12,7 +15,7 @@ const destinationPath = sourcePaths.pop() || "";
         console.log("[*] Nothing to copy.");
     } else {
         const length = sourcePaths.length;
-        const isDestinationDirectory = length > 1 || destinationPath.endsWith('/');
+        const isDestinationDirectory = length > 1 || destinationPath.endsWith('/') ||  existsSync(destinationPath) && isDirectory(destinationPath);
         console.log(chalk.cyan(`Copying ${length} ${length == 1 ? 'file' : 'files'} to ${chalk.white(destinationPath)}  [${sourcePaths.map(v => chalk.white(v)).join(',')}]`));
         for (let i = 0; i < length; i++) {
             const sourcePath = sourcePaths[i];
