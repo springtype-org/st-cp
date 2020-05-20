@@ -5,21 +5,32 @@
 ![Node CI](https://github.com/springtype-org/st-cp/workflows/Node%20CI/badge.svg?branch=master)
 
 > Cross-platform `cp`
-  copy easy files folders in npm using npx `st-cp source destination`
-  **create missing folders automatically**
+  copy easy files and folders:
+  **create missing folders _automatically_**
 >
-##Parameter
-###source 
+use it programmatically:
+install via `npm i st-cp` or `yarn add st-cp`. 
+````$typescript
+import {copyPathOrFile} from 'st-cp';
+
+copyPathOrFile('sourcePath',{path: 'destinationPath', isDirectory: true});
+
+````
+
+use the cli npx `st-cp source destination`
+
+## Parameter
+### source 
  - required
  - multiple (files and folders)
-###destination
+### destination
  - required
  - enforce folder with / @ the end
  
  
 
-##Examples:
-####copy files to a folder
+## Examples:
+#### copy files to a folder
   ```
    # before
    ├── --- file1
@@ -36,7 +47,7 @@
    ├── --- folder/file2
    ├── --- folder/file3
   ```  
-####copy file to a folder
+#### copy file to a folder
   ```
    # before
    ├── --- file
@@ -47,7 +58,7 @@
    ├── --- file
    ├── --- folder/file
   ```  
-####copy file to a file (create a folder)
+#### copy file to a file (create a folder)
   ```
    # before
    ├── --- file
@@ -58,7 +69,7 @@
    ├── --- file
    ├── --- folder/new-file
   ```  
-####copy folder to folder
+#### copy folder to folder
   ```
    # before
    ├── --- folder
@@ -69,7 +80,7 @@
    ├── --- folder
    ├── --- folder1
   ```  
-####copy files and folders to destination
+#### copy files and folders to destination
   ```
    # before
    ├── --- file1
@@ -91,7 +102,7 @@
   ```  
 
 
-###Exceptional:
+### Exceptional:
 copy file to existing folder
   ```
    # before
@@ -106,6 +117,40 @@ copy file to existing folder
    ├── --- folder/file
   ```  
 
+# Semantic Commit Messages
+
+See how a minor change to your commit message style can make you a better programmer.
+
+Format: `<type>(<scope>): <subject>`
+
+`<scope>` is optional
+
+## Example
+
+```
+feat: add hat wobble
+^--^  ^------------^
+|     |
+|     +-> Summary in present tense.
+|
++-------> Type: chore, docs, feat, fix, refactor, style, or test.
+```
+
+More Examples:
+
+- `feat`: (new feature for the user, not a new feature for build script)
+- `fix`: (bug fix for the user, not a fix to a build script)
+- `docs`: (changes to the documentation)
+- `style`: (formatting, missing semi colons, etc; no production code change)
+- `refactor`: (refactoring production code, eg. renaming a variable)
+- `test`: (adding missing tests, refactoring tests; no production code change)
+- `chore`: (updating grunt tasks etc; no production code change)
+
+References:
+
+- https://www.conventionalcommits.org/
+- https://seesparkbox.com/foundry/semantic_commit_messages
+- http://karma-runner.github.io/1.0/dev/git-commit-msg.html
 <h2 align="center">Backers</h2>
 
 Thank you so much for supporting us financially! 🙏🏻😎🥳👍
