@@ -99,6 +99,7 @@ jobs:
         uses: springtype-org/github-action-npm-publish@master
         with:
           install_build_packages: true
+          project_build_dir: dist
           create_tag: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
