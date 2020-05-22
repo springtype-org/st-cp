@@ -22,23 +22,23 @@ jobs:
       - name: Build package
         run: yarn build
       - name: Get version
-        id: tag-action
+        id: version-action
         uses: springtype-org/github-tag-action@release/v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           tag_prefix: v
           dry_run: true
       - name: Check version of tags
-        run: echo "tag(${{ steps.tag-action.outputs.previous_tag  }}) --> tag(${{ steps.tag-action.outputs.new_tag }}) version=${{ steps.tag-action.outputs.new_version }}"
+        run: echo "tag(${{ steps.version-action.outputs.previous_tag  }}) --> tag(${{ steps.version-action.outputs.new_tag }}) version=${{ steps.version-action.outputs.new_version }}"
       - name: Set new version and push
-        if: ${{ steps.tag-action.outputs.new_version }}
+        if: ${{ steps.version-action.outputs.new_version }}
         run: |
           git config user.name "Bot"
           git config user.email noreply@github.com
-          npm version ${{ steps.tag-action.outputs.new_version }}
-          git push origin ${{ steps.tag-action.outputs.new_tag }}
+          npm version ${{ steps.version-action.outputs.new_version }}
+          git push origin ${{ steps.version-action.outputs.new_tag }}
           git push
       - name: Pusblish to npm
         run: npm publish dist/
-          env:
-            NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
