@@ -1,6 +1,6 @@
 {
     "name": "st-cp",
-    "version": "2.0.0-beta.1",
+    "version": "0.0.3",
     "publishConfig": {
         "access": "public"
     },
@@ -18,7 +18,7 @@
     "scripts": {
         "prebuild": "npx st-rm-rf dist",
         "build": "tsc",
-        "postbuild" : "npx st-cp README.md package.json dist && cd dist && yarn --prod",
+        "postbuild": "npx st-cp README.md package.json dist && cd dist && yarn --prod",
         "pretest": "npx st-rm-rf .test",
         "test": "ts-node test.ts",
         "pretest:cli": "npx st-rm-rf .test",
