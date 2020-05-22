@@ -1,12 +1,16 @@
 
 name: NPM publish
-on: [push]
-
+on:
+  push:
+    branches:
+      - 'master'
 jobs:
   version:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v1
         with:
           node-version: 10.x
@@ -17,7 +21,6 @@ jobs:
         uses: springtype-org/github-tag-action@release/v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          release_branches: .*
           tag_prefix: v
           dry_run: true
       - name: Check version of tags
@@ -27,7 +30,6 @@ jobs:
         run: |
           git config user.name "Bot"
           git config user.email noreply@github.com
-          ls -lisha
           npm version ${{ steps.tag-action.outputs.new_version }}
           git push origin ${{ steps.tag-action.outputs.new_tag }}
           git push
@@ -60,7 +62,7 @@ jobs:
         with:
           name: st-cp.zip
           path: dist
-#      - run: npm publish dist/
-#        env:
-#          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+     - run: npm publish dist/
+       env:
+         NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
