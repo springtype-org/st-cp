@@ -1,13 +1,6 @@
 
 name: Node CI
-on:
-  push:
-    branches:
-      - '**'
-      - '!master'
-  pull_request:
-    branches:
-      - 'master'
+on: [push,pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -83,3 +76,29 @@ jobs:
         run: yarn
       - name: Run cli tests
         run: yarn test:cli
+
+  npm-publish:
+    needs: [test,cli-test]
+    name: npm-publish
+    runs-on: ubuntu-latest
+    # only on master
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.0.0
+      - name: Download build
+        uses: actions/download-artifact@v2
+        with:
+          name: st-cp-dist.zip
+          path: dist
+      - run: ls -lisha
+      - name: Publish if version in package.json change
+        uses: springtype/github-action-npm-publish@master
+        with: # All of theses inputs are optional
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_AUTH_TOKEN: ${{secrets.npm_token}}
