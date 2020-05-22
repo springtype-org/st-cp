@@ -89,8 +89,6 @@ jobs:
         with:
           registry-url: //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}
           node-version: 10.x
-        env:
-          NPM_AUTH_TOKEN: ${{secrets.npm_token}}
       - name: Download build
         uses: actions/download-artifact@v2
         with:
@@ -103,4 +101,5 @@ jobs:
           project_build_dir: dist
           create_tag: true
         env:
+          NPM_AUTH_TOKEN: ${{secrets.npm_token}}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
