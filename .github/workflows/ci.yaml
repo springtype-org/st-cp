@@ -84,10 +84,8 @@ jobs:
     # only on master
     if: github.ref == 'refs/heads/master'
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Set up Node.js
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
         with:
           node-version: 10.0.0
       - name: Download build
@@ -95,7 +93,6 @@ jobs:
         with:
           name: st-cp-dist.zip
           path: dist
-      - run: ls -lisha
       - name: Publish if version in package.json change
         uses: springtype-org/github-action-npm-publish@master
         env:
