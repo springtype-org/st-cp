@@ -87,7 +87,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          always-auth: true
+          registry-url: //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}
           node-version: 10.x
       - name: Download build
         uses: actions/download-artifact@v2
