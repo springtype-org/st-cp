@@ -39,6 +39,6 @@ jobs:
           git push origin ${{ steps.tag-action.outputs.new_tag }}
           git push
       - name: Pusblish to npm
-      - run: npm publish dist/
+        run: npm publish dist/
           env:
             NODE_AUTH_TOKEN: ${{secrets.npm_token}}
