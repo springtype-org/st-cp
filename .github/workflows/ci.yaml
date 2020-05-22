@@ -1,14 +1,13 @@
 
 name: Node CI
 on:
-  pull_request:
-    branches:
-     - master
-     - feature/*
   push:
     branches:
-      - master
-      - feature/*
+      - '**'
+      - '!master'
+  pull_request:
+    branches:
+      - 'master'
 jobs:
   build:
     runs-on: ubuntu-latest
