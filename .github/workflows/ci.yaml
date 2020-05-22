@@ -97,6 +97,6 @@ jobs:
           path: dist
       - run: ls -lisha
       - name: Publish if version in package.json change
-        uses: springtype/github-action-npm-publish@master
+        uses: springtype-org/github-action-npm-publish@master
         env:
           NPM_AUTH_TOKEN: ${{secrets.npm_token}}
