@@ -15,8 +15,13 @@ jobs:
         with:
           node-version: 10.x
           registry-url: 'https://registry.npmjs.org'
-      - uses: actions/checkout@master
-      - name: Bump version and push tag
+      - name: Intall yarn
+        run: npm install -g yarn
+      - name: Install dependencies
+      - run: yarn install
+      - name: Build package
+        run: yarn build
+      - name: Get version
         id: tag-action
         uses: springtype-org/github-tag-action@release/v1
         with:
@@ -25,7 +30,7 @@ jobs:
           dry_run: true
       - name: Check version of tags
         run: echo "tag(${{ steps.tag-action.outputs.previous_tag  }}) --> tag(${{ steps.tag-action.outputs.new_tag }}) version=${{ steps.tag-action.outputs.new_version }}"
-      - name: Set new version
+      - name: Set new version and push
         if: ${{ steps.tag-action.outputs.new_version }}
         run: |
           git config user.name "Bot"
@@ -33,36 +38,7 @@ jobs:
           npm version ${{ steps.tag-action.outputs.new_version }}
           git push origin ${{ steps.tag-action.outputs.new_tag }}
           git push
-  build:
-    needs: version
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-      - run: npm install -g yarn
-      - run: yarn install
-      - run: yarn build
-      - name: Add artifact to github
-        uses: actions/upload-artifact@v2
-        with:
-          name: st-cp.zip
-          path: dist
-
-  npm-publish:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 10
-          registry-url: https://registry.npmjs.org/
-      - name: Download build
-        uses: actions/download-artifact@v2
-        with:
-          name: st-cp.zip
-          path: dist
+      - name: Pusblish to npm
       - run: npm publish dist/
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-
+          env:
+            NODE_AUTH_TOKEN: ${{secrets.npm_token}}
