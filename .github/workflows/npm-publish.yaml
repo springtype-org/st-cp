@@ -62,7 +62,7 @@ jobs:
         with:
           name: st-cp.zip
           path: dist
-     - run: npm publish dist/
-       env:
-         NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      - run: npm publish dist/
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
