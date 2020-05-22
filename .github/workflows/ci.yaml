@@ -95,6 +95,9 @@ jobs:
           path: dist
       - name: Publish if version in package.json change
         uses: springtype-org/github-action-npm-publish@master
+        with:
+          install_build_packages: true
+          create_tag: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_AUTH_TOKEN: ${{secrets.npm_token}}
