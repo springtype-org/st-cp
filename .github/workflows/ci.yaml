@@ -97,11 +97,10 @@ jobs:
       - name: Publish if version in package.json change
         uses: springtype-org/github-action-npm-publish@master
         with:
-          npm_user_name: ${{ secrets.npm_user_name }}
-          npm_user_password: ${{ secrets.npm_user_password }}
           install_build_packages: true
           project_build_dir: dist
           create_tag: true
-          auth_token: ${{secrets.npm_token}}
+          auth_token: ${{ secrets.npm_token }}
         env:
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
