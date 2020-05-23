@@ -94,11 +94,13 @@ jobs:
         with:
           name: st-cp-dist.zip
           path: dist
-      - name: Install yarn
-        run: npm install -g yarn
-      - name: Create .npmrc
-        run: echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" >> ~/.npmrc
+      - name: Publish if version in package.json change
+        uses: springtype-org/github-action-npm-publish@master
+        with:
+          install_build_packages: true
+          project_build_dir: dist
+          create_tag: true
+          auth_token: ${{ secrets.npm_token }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
-      - name: Publish
-        run: cd dist && yarn publish --new-version ${GITHUB_REF#"refs/tags/"} --no-git-tag-version
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
