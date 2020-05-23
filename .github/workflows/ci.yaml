@@ -94,10 +94,6 @@ jobs:
         with:
           name: st-cp-dist.zip
           path: dist
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
-      - run: npm whoami
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
       - name: Publish if version in package.json change
         uses: springtype-org/github-action-npm-publish@master
         with:
