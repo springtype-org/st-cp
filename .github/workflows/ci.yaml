@@ -101,4 +101,4 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
       - name: Publish
-        run: yarn publish dist --new-version ${GITHUB_REF#"refs/tags/"} --no-git-tag-version
+        run: cd dist && yarn publish --new-version ${GITHUB_REF#"refs/tags/"} --no-git-tag-version
